@@ -1,0 +1,134 @@
+:root {
+  --background-color: #e0f7f9;       /* Light turquoise background */
+  --text-color: #111827;             /* Dark text for contrast */
+  --header-color: #144552;           /* Deep teal (dark navbar/header) */
+  --navbar-color: #144552;           /* Matching dark navbar */
+  --container-color: #ffffff;        /* White for content cards/sections */
+  --border-color: #2b6777;           /* Subtle accent border */
+  --button-color: #2b6777;           /* Medium teal button */
+  --button-hover: #1e4a58;           /* Darker shade on hover */
+  --accent-color: #7bb6c6;           /* Light accent for headings/borders */
+}
+
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header */
+.header {
+  background-color: var(--header-color);
+  color: var(--text-color);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.nav-links a {
+  margin: 0 1rem;
+  color: var(--text-color);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--button-hover);
+}
+
+/* Sidenav */
+.side-nav {
+  background-color: var(--navbar-color);
+  color: var(--text-color);
+  width: 220px;
+  padding: 2rem 1rem;
+  flex-shrink: 0;
+  position: sticky;
+  top: 4rem;
+  height: calc(100vh - 4rem);
+  overflow-y: auto;
+  border-right: 1px solid var(--border-color);
+}
+
+/* Main Layout */
+.main-wrapper {
+  display: flex;
+  flex: 1;
+  min-height: 100%;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  background-color: var(--container-color);
+}
+
+/* Footer */
+footer {
+  background-color: var(--navbar-color);
+  color: var(--text-color);
+  text-align: center;
+  padding: 1rem;
+  margin-top: auto;
+  border-top: 2px solid var(--border-color);
+}
+
+/* Button Style */
+.button {
+  background-color: var(--button-color);
+  color: white;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: var(--button-hover);
+}
+
+/* Cards or Sections */
+.card {
+  background-color: white;
+  padding: 1rem;
+  margin: 1rem 0;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .main-wrapper {
+    flex-direction: column;
+  }
+
+  .side-nav {
+    width: 100%;
+    height: auto;
+    position: static;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+  }
+}
