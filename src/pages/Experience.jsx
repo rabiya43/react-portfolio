@@ -2,12 +2,12 @@ import React, { useEffect, useContext } from 'react';
 import {
   Box,
   Typography,
-  Grid,
   List,
   ListItem,
   ListItemText,
 } from '@mui/material';
 import { PageTitleContext } from '../context/PageTitleContext';
+import { motion } from 'framer-motion';
 
 const experiences = [
   { title: 'Event Management Head', organization: 'KBW', year: '2022' },
@@ -19,72 +19,120 @@ const experiences = [
 
 const Experience = () => {
   const { setTitle } = useContext(PageTitleContext);
-
   useEffect(() => {
     setTitle('Experience');
   }, [setTitle]);
 
-  // Split into two columns
-  const mid = Math.ceil(experiences.length / 2);
-  const leftColumn = experiences.slice(0, mid);
-  const rightColumn = experiences.slice(mid);
+  const top = experiences.slice(0, 1);
+  const right = experiences.slice(1, 2);
+  const bottom = experiences.slice(2, 3);
+  const left = experiences.slice(3);
+
+  const fadeInVariant = {
+    hidden: { opacity: 0, y: 30 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.2, duration: 0.6 },
+    }),
+  };
+
+  const renderList = (items, align = 'center') => (
+    <List dense>
+      {items.map((exp, index) => (
+        <motion.div
+          key={index}
+          custom={index}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInVariant}
+        >
+          <ListItem sx={{ justifyContent: align, py: 0.5 }}>
+            <ListItemText
+              primary={
+                <Typography
+                  variant="body1"
+                  sx={{
+                    fontSize: '1.1rem',
+                    fontWeight: 'bold',
+                    textAlign: align,
+                  }}
+                >
+                  {exp.title}
+                  {exp.organization ? ' - ' + exp.organization : ''}
+                </Typography>
+              }
+              secondary={exp.year}
+              sx={{ textAlign: align }}
+            />
+          </ListItem>
+        </motion.div>
+      ))}
+    </List>
+  );
 
   return (
     <Box sx={{ p: 3 }}>
-      <Typography variant="h4" gutterBottom sx={{ fontWeight: 'bold', color: '#2b6777' }}>
+      <Typography
+        variant="h3"
+        gutterBottom
+        sx={{ fontWeight: 'bold', color: '#2b6777', textAlign: 'center' }}
+      >
         Experience
       </Typography>
 
-      <Grid container spacing={3} justifyContent="center" alignItems="center">
-        {/* Left Experience List */}
-        <Grid item xs={12} md={4}>
-          <List>
-            {leftColumn.map((exp, index) => (
-              <ListItem key={index} disablePadding sx={{ mb: 2 }}>
-                <ListItemText
-                  primary={`${exp.title} ${exp.organization ? '- ' + exp.organization : ''}`}
-                  secondary={exp.year}
-                />
-              </ListItem>
-            ))}
-          </List>
-        </Grid>
+      <Box
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: '1fr auto 1fr',
+          gridTemplateRows: 'auto auto auto',
+          gap: 0.5,
+          justifyItems: 'center',
+          alignItems: 'center',
+        }}
+      >
+        {/* Top */}
+        <Box gridColumn="1 / span 3" gridRow="1">
+          {renderList(top, 'center')}
+        </Box>
 
-        {/* Centered Image */}
-        <Grid item xs={12} md={4} sx={{ textAlign: 'center' }}>
+        {/* Left */}
+        <Box gridColumn="1" gridRow="2">
+          {renderList(left, 'right')}
+        </Box>
+
+        {/* Center Image */}
+        <Box gridColumn="2" gridRow="2" sx={{ p: 1 }}>
           <Box
             component="img"
-            src="/experience.jpeg" // Change this to your actual image file if needed
+            src="/experience.jpeg"
             alt="Experience"
             sx={{
-              width: '220px',
-              height: '220px',
-              borderRadius: '50%',
-              objectFit: 'cover',
-              boxShadow: 6,
+              width: '95%',
+              height: 'auto',
+              maxHeight: '700px',
+              borderRadius: 3,
+              boxShadow: 4,
               transition: 'transform 0.3s ease, box-shadow 0.3s ease',
               '&:hover': {
-                transform: 'scale(1.05)',
-                boxShadow: '0 12px 20px rgba(0,0,0,0.4)',
+                transform: 'scale(1.03)',
+                boxShadow: '0 10px 18px rgba(0,0,0,0.3)',
               },
             }}
           />
-        </Grid>
+        </Box>
 
-        {/* Right Experience List */}
-        <Grid item xs={12} md={4}>
-          <List>
-            {rightColumn.map((exp, index) => (
-              <ListItem key={index} disablePadding sx={{ mb: 2 }}>
-                <ListItemText
-                  primary={`${exp.title} ${exp.organization ? '- ' + exp.organization : ''}`}
-                  secondary={exp.year}
-                />
-              </ListItem>
-            ))}
-          </List>
-        </Grid>
-      </Grid>
+        {/* Right */}
+        <Box gridColumn="3" gridRow="2">
+          {renderList(right, 'left')}
+        </Box>
+
+        {/* Bottom */}
+        <Box gridColumn="1 / span 3" gridRow="3">
+          {renderList(bottom, 'center')}
+        </Box>
+      </Box>
     </Box>
   );
 };
