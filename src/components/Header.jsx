@@ -19,7 +19,7 @@ const Header = () => {
   return (
     <AppBar position="fixed" sx={{ zIndex: 1300 }}>
       <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Typography variant="h5" component="div" sx={{ fontWeight: 'bold' }}>
+        <Typography variant="h" component="div" sx={{ fontWeight: 'bold' }}>
           RABIYA's PORTFOLIO
         </Typography>
         <div>
