@@ -5,6 +5,7 @@ import {
   Grid,
   Paper,
 } from '@mui/material';
+import { motion } from 'framer-motion';
 import { PageTitleContext } from '../context/PageTitleContext';
 
 function Education() {
@@ -27,72 +28,86 @@ function Education() {
       <Grid container spacing={4}>
         {/* Bachelor in AI */}
         <Grid item xs={12} md={6}>
-          <Paper elevation={3} sx={{ p: 2, textAlign: 'center' }}>
-            <Typography
-              variant="h6"
-              sx={{ fontWeight: 'bold', mb: 1, fontFamily: '"Segoe UI", sans-serif' }}
-            >
-              Bachelor in Artificial Intelligence
-            </Typography>
-            <Typography
-              variant="body2"
-              sx={{ fontFamily: '"Segoe UI", sans-serif', mb: 2 }}
-            >
-              ITU (2023 - 2027)
-            </Typography>
-            <Box
-              component="img"
-              src="/AI.jpeg"
-              alt="AI"
-              sx={{
-                width: '100%',
-                maxWidth: '250px',
-                height: 'auto',
-                borderRadius: 2,
-                boxShadow: 4,
-                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                '&:hover': {
-                  transform: 'scale(1.05)',
-                  boxShadow: '0 8px 16px rgba(0,0,0,0.3)',
-                },
-              }}
-            />
-          </Paper>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <Paper elevation={3} sx={{ p: 2, textAlign: 'center' }}>
+              <Typography
+                variant="h6"
+                sx={{ fontWeight: 'bold', mb: 1, fontFamily: '"Segoe UI", sans-serif' }}
+              >
+                Bachelor in Artificial Intelligence
+              </Typography>
+              <Typography
+                variant="body2"
+                sx={{ fontFamily: '"Segoe UI", sans-serif', mb: 2 }}
+              >
+                ITU (2023 - 2027)
+              </Typography>
+              <Box
+                component="img"
+                src="/AI.jpeg"
+                alt="AI"
+                sx={{
+                  width: '100%',
+                  maxWidth: '250px',
+                  height: 'auto',
+                  borderRadius: 2,
+                  boxShadow: 4,
+                  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                  '&:hover': {
+                    transform: 'scale(1.05)',
+                    boxShadow: '0 8px 16px rgba(0,0,0,0.3)',
+                  },
+                }}
+              />
+            </Paper>
+          </motion.div>
         </Grid>
 
         {/* I.Cs Physics */}
         <Grid item xs={12} md={6}>
-          <Paper elevation={3} sx={{ p: 2, textAlign: 'center' }}>
-            <Typography
-              variant="h6"
-              sx={{ fontWeight: 'bold', mb: 1, fontFamily: '"Segoe UI", sans-serif' }}
-            >
-              I.Cs Physics
-            </Typography>
-            <Typography
-              variant="body2"
-              sx={{ fontFamily: '"Segoe UI", sans-serif', mb: 2 }}
-            >
-              Kinnaird College (2021 - 2023)
-            </Typography>
-            <Box
-              component="img"
-              src="/Physics.jpeg"
-              alt="Physics"
-              sx={{
-                width: '100%',
-                maxWidth: '250px',
-                height: 'auto',
-                borderRadius: 2,
-                boxShadow: 4,
-                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                '&:hover': {
-                  transform: 'scale(1.05)',
-                  boxShadow: '0 8px 16px rgba(0,0,0,0.3)',
-                },
-              }}
-            />
-          </Paper>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <Paper elevation={3} sx={{ p: 2, textAlign: 'center' }}>
+              <Typography
+                variant="h6"
+                sx={{ fontWeight: 'bold', mb: 1, fontFamily: '"Segoe UI", sans-serif' }}
+              >
+                I.Cs Physics
+              </Typography>
+              <Typography
+                variant="body2"
+                sx={{ fontFamily: '"Segoe UI", sans-serif', mb: 2 }}
+              >
+                Kinnaird College (2021 - 2023)
+              </Typography>
+              <Box
+                component="img"
+                src="/Physics.jpeg"
+                alt="Physics"
+                sx={{
+                  width: '100%',
+                  maxWidth: '250px',
+                  height: 'auto',
+                  borderRadius: 2,
+                  boxShadow: 4,
+                  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                  '&:hover': {
+                    transform: 'scale(1.05)',
+                    boxShadow: '0 8px 16px rgba(0,0,0,0.3)',
+                  },
+                }}
+              />
+            </Paper>
+          </motion.div>
         </Grid>
       </Grid>
     </Box>
