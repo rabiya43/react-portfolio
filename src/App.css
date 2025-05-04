@@ -1,19 +1,20 @@
+/* Theme Colors */
 :root {
   --background-color: #e0f7f9;       /* Light turquoise background */
-  --text-color: #111827;             /* Dark text for contrast */
-  --header-color: #144552;           /* Deep teal (dark navbar/header) */
-  --navbar-color: #144552;           /* Matching dark navbar */
-  --container-color: #ffffff;        /* White for content cards/sections */
-  --border-color: #2b6777;           /* Subtle accent border */
-  --button-color: #2b6777;           /* Medium teal button */
-  --button-hover: #1e4a58;           /* Darker shade on hover */
-  --accent-color: #7bb6c6;           /* Light accent for headings/borders */
+  --text-color: #111827;             /* Dark readable text */
+  --header-color: #144552;           /* Dark header/navbar */
+  --navbar-color: #144552;           /* Matching side navbar */
+  --container-color: #ffffff;        /* White content sections */
+  --border-color: #2b6777;           /* Border and card accent */
+  --button-color: #2b6777;           /* Primary button */
+  --button-hover: #1e4a58;           /* Button hover shade */
+  --accent-color: #7bb6c6;           /* Subtle highlights */
 }
 
-
+/* App Container */
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
 }
@@ -27,7 +28,7 @@ body {
 /* Header */
 .header {
   background-color: var(--header-color);
-  color: var(--text-color);
+  color: var(--background-color);
   padding: 1rem 2rem;
   display: flex;
   align-items: center;
@@ -35,30 +36,37 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  border-bottom: 2px solid var(--border-color);
+  border-bottom: 2px solid var(--accent-color);
 }
 
 .logo {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: bold;
 }
 
 .nav-links a {
   margin: 0 1rem;
-  color: var(--text-color);
+  color: var(--background-color);
   font-weight: 500;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-  color: var(--button-hover);
+  color: var(--accent-color);
 }
 
-/* Sidenav */
+/* Layout Wrap */
+.main-wrapper {
+  display: flex;
+  flex: 1;
+  min-height: 100%;
+}
+
+/* Side Navigation */
 .side-nav {
   background-color: var(--navbar-color);
-  color: var(--text-color);
+  color: var(--background-color);
   width: 220px;
   padding: 2rem 1rem;
   flex-shrink: 0;
@@ -66,38 +74,29 @@ body {
   top: 4rem;
   height: calc(100vh - 4rem);
   overflow-y: auto;
-  border-right: 1px solid var(--border-color);
 }
 
-/* Main Layout */
-.main-wrapper {
-  display: flex;
-  flex: 1;
-  min-height: 100%;
-}
-
+/* Main Content */
 .main-content {
   flex: 1;
   padding: 2rem;
-  background-color: var(--container-color);
+  background-color: var(--background-color);
 }
 
 /* Footer */
 footer {
   background-color: var(--navbar-color);
-  color: var(--text-color);
+  color: var(--background-color);
   text-align: center;
   padding: 1rem;
-  margin-top: auto;
-  border-top: 2px solid var(--border-color);
 }
 
-/* Button Style */
+/* Buttons */
 .button {
   background-color: var(--button-color);
   color: white;
+  padding: 0.7rem 1.5rem;
   border: none;
-  padding: 0.7rem 1.2rem;
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -107,16 +106,32 @@ footer {
   background-color: var(--button-hover);
 }
 
-/* Cards or Sections */
+/* Cards / Sections */
 .card {
-  background-color: white;
-  padding: 1rem;
-  margin: 1rem 0;
+  background-color: var(--container-color);
   border: 1px solid var(--border-color);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
   border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Responsive */
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Titles */
+.section-title {
+  font-size: 2rem;
+  color: var(--header-color);
+  margin-bottom: 1rem;
+  border-left: 4px solid var(--accent-color);
+  padding-left: 0.5rem;
+}
+
+/* Responsive Layout */
 @media screen and (max-width: 768px) {
   .main-wrapper {
     flex-direction: column;
@@ -128,7 +143,7 @@ footer {
     position: static;
   }
 
-  .nav-links {
-    flex-wrap: wrap;
+  .nav-links a {
+    margin: 0 0.5rem;
   }
 }

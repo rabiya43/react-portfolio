@@ -1,6 +1,13 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography, Avatar, IconButton, Menu, MenuItem } from '@mui/material';
-import { deepPurple } from '@mui/material/colors';
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Avatar,
+  IconButton,
+  Menu,
+  MenuItem,
+} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
 const Header = () => {
@@ -12,12 +19,15 @@ const Header = () => {
   return (
     <AppBar position="fixed" sx={{ zIndex: 1300 }}>
       <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Typography variant="h6" component="div">
-          My Portfolio
+        <Typography variant="h5" component="div" sx={{ fontWeight: 'bold' }}>
+          RABIYA's PORTFOLIO
         </Typography>
         <div>
           <IconButton onClick={handleClick}>
-            <Avatar sx={{ bgcolor: deepPurple[500] }} src="/assests/images/profile.jpg" />
+            <Avatar
+              src="/assets/images/profile.jpg"
+              sx={{ bgcolor: 'primary.main' }}
+            />
           </IconButton>
           <Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleClose}>
             <MenuItem onClick={handleClose}>Logout (placeholder)</MenuItem>

@@ -1,33 +1,75 @@
-// src/pages/Skills.jsx
-import React from 'react';
-import { Typography, Box, LinearProgress } from '@mui/material';
+import React, { useEffect, useContext } from 'react';
+import {
+  Typography,
+  Box,
+  LinearProgress,
+  Grid,
+  Paper,
+} from '@mui/material';
+import { PageTitleContext } from '../context/PageTitleContext';
 
-function Skills() {
+const skills = [
+  { name: 'C++/C#', level: 90, img: 'Cpp.jpeg' },
+  { name: 'Python', level: 85, img: 'python.jpeg' },
+  { name: 'Game Development', level: 90, img: 'game.jpeg' },
+  { name: 'Software Development', level: 50, img: 'software.jpeg' },
+  { name: 'Project Management', level: 80, img: 'project.png' },
+  { name: 'Canva, Excel, Word', level: 95, img: 'microsoft.jpeg' },
+];
+
+const Skills = () => {
+  const { setTitle } = useContext(PageTitleContext);
+
+  useEffect(() => {
+    setTitle('Skills');
+  }, [setTitle]);
+
   return (
-    <Box p={3}>
-      <Typography variant="h4" gutterBottom>
+    <Box sx={{ p: 3 }}>
+      <Typography
+        variant="h3"
+        gutterBottom
+        sx={{ fontWeight: 'bold', color: '#2b6777', fontFamily: '"Segoe UI", sans-serif' }}
+      >
         Skills
       </Typography>
 
-      <Typography variant="body1" gutterBottom>C++/C#</Typography>
-      <LinearProgress variant="determinate" value={90} />
-
-      <Typography variant="body1" gutterBottom mt={2}>Python</Typography>
-      <LinearProgress variant="determinate" value={85} />
-
-      <Typography variant="body1" gutterBottom mt={2}>Game Development</Typography>
-      <LinearProgress variant="determinate" value={90} />
-
-      <Typography variant="body1" gutterBottom mt={2}>Software Development</Typography>
-      <LinearProgress variant="determinate" value={50} />
-
-      <Typography variant="body1" gutterBottom mt={2}>Project Management</Typography>
-      <LinearProgress variant="determinate" value={80} />
-
-      <Typography variant="body1" gutterBottom mt={2}>Canva, Excel, Word</Typography>
-      <LinearProgress variant="determinate" value={95} />
+      <Grid container spacing={4}>
+        {skills.map((skill, index) => (
+          <Grid item xs={12} sm={6} md={4} key={index}>
+            <Paper elevation={4} sx={{ p: 2, textAlign: 'center' }}>
+              <Box
+                component="img"
+                src={`/${skill.img}`}
+                alt={skill.name}
+                sx={{
+                  width: '220px',
+                  height: '150px',
+                  objectFit: 'contain',
+                  borderRadius: '8px',
+                  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                  boxShadow: 3,
+                  mb: 1,
+                  '&:hover': {
+                    transform: 'scale(1.1)',
+                    boxShadow: '0 8px 16px rgba(0,0,0,0.3)',
+                  },
+                }}
+              />
+              <Typography variant="subtitle1" gutterBottom sx={{ fontWeight: 'bold' }}>
+                {skill.name}
+              </Typography>
+              <LinearProgress
+                variant="determinate"
+                value={skill.level}
+                sx={{ height: 15, borderRadius: 5 }}
+              />
+            </Paper>
+          </Grid>
+        ))}
+      </Grid>
     </Box>
   );
-}
+};
 
 export default Skills;
