@@ -1,9 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { Box, TextField, Button, Typography, Alert, CircularProgress } from '@mui/material';
 import { PageTitleContext } from '../context/PageTitleContext';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import emailjs from '@emailjs/browser';
+import { motion } from 'framer-motion';
 
 const SERVICE_ID = 'service_04bt4bn';
 const TEMPLATE_ID = 'template_3dv8y7k';
@@ -40,11 +41,35 @@ const Contact = () => {
     }
   };
 
+  const fadeInVariant = {
+    hidden: { opacity: 0, y: 30 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.2, duration: 0.6 },
+    }),
+  };
+
   return (
     <Box sx={{ maxWidth: 500, mx: 'auto', mt: 10 }}>
-      <Typography variant="h4" gutterBottom>Contact Me</Typography>
-      {submitted && <Alert severity="success" sx={{ mb: 2 }}>Form submitted successfully!</Alert>}
-      {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
+      <Typography
+        variant="h4"
+        gutterBottom
+        sx={{ fontWeight: 'bold', textAlign: 'center' }}
+      >
+        Contact Me
+      </Typography>
+
+      {submitted && (
+        <Alert severity="success" sx={{ mb: 2 }}>
+          Form submitted successfully!
+        </Alert>
+      )}
+      {error && (
+        <Alert severity="error" sx={{ mb: 2 }}>
+          {error}
+        </Alert>
+      )}
 
       <Formik
         initialValues={{ name: '', email: '', message: '' }}
@@ -53,44 +78,79 @@ const Contact = () => {
       >
         {({ errors, touched }) => (
           <Form>
-            <Field
-              as={TextField}
-              fullWidth
-              margin="normal"
-              label="Name"
-              name="name"
-              error={touched.name && Boolean(errors.name)}
-              helperText={touched.name && errors.name}
-            />
-            <Field
-              as={TextField}
-              fullWidth
-              margin="normal"
-              label="Email"
-              name="email"
-              error={touched.email && Boolean(errors.email)}
-              helperText={touched.email && errors.email}
-            />
-            <Field
-              as={TextField}
-              fullWidth
-              margin="normal"
-              label="Message"
-              name="message"
-              multiline
-              rows={4}
-              error={touched.message && Boolean(errors.message)}
-              helperText={touched.message && errors.message}
-            />
-            <Button
-              variant="contained"
-              type="submit"
-              sx={{ mt: 2 }}
-              disabled={loading}
-              startIcon={loading && <CircularProgress size={20} />}
+            <motion.div
+              custom={0}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInVariant}
             >
-              {loading ? 'Sending...' : 'Submit'}
-            </Button>
+              <Field
+                as={TextField}
+                fullWidth
+                margin="normal"
+                label="Name"
+                name="name"
+                error={touched.name && Boolean(errors.name)}
+                helperText={touched.name && errors.name}
+              />
+            </motion.div>
+
+            <motion.div
+              custom={1}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInVariant}
+            >
+              <Field
+                as={TextField}
+                fullWidth
+                margin="normal"
+                label="Email"
+                name="email"
+                error={touched.email && Boolean(errors.email)}
+                helperText={touched.email && errors.email}
+              />
+            </motion.div>
+
+            <motion.div
+              custom={2}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInVariant}
+            >
+              <Field
+                as={TextField}
+                fullWidth
+                margin="normal"
+                label="Message"
+                name="message"
+                multiline
+                rows={4}
+                error={touched.message && Boolean(errors.message)}
+                helperText={touched.message && errors.message}
+              />
+            </motion.div>
+
+            <motion.div
+              custom={3}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInVariant}
+            >
+              <Button
+                variant="contained"
+                type="submit"
+                sx={{ mt: 2 }}
+                disabled={loading}
+                startIcon={loading && <CircularProgress size={20} />}
+              >
+                {loading ? 'Sending...' : 'Submit'}
+              </Button>
+            </motion.div>
           </Form>
         )}
       </Formik>

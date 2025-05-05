@@ -1,4 +1,4 @@
-/* Theme Colors for Light Mode (default) */
+/* Theme Colors */
 :root {
   --background-color: #e0f7f9;       /* Light turquoise background */
   --text-color: #111827;             /* Dark readable text */
@@ -9,19 +9,6 @@
   --button-color: #2b6777;           /* Primary button */
   --button-hover: #1e4a58;           /* Button hover shade */
   --accent-color: #7bb6c6;           /* Subtle highlights */
-}
-
-/* Dark Mode Overrides */
-body.dark-mode {
-  --background-color: #121212;
-  --text-color: #f5f5f5;
-  --header-color: #1e1e1e;
-  --navbar-color: #1e1e1e;
-  --container-color: #1f1f1f;
-  --border-color: #444;
-  --button-color: #7bb6c6;
-  --button-hover: #5ea3b3;
-  --accent-color: #90caf9;
 }
 
 /* App Container */
