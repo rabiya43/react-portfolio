@@ -75,7 +75,7 @@ function Home() {
 
       {/* Main content */}
       <Typography
-        variant="h4"
+        variant="h3"
         gutterBottom
         sx={{
           mt: 2,
@@ -110,7 +110,8 @@ function Home() {
       >
         <strong>About Me</strong><br />
         An undergraduate student at Information Technology University (ITU), Lahore,
-        pursuing a Bachelor’s degree in Artificial Intelligence (BSAI).
+        pursuing a Bachelor’s degree in Artificial Intelligence (BSAI).<br /><br />
+        Additionally, I am currently a <strong>Teaching Assistant of DBMS</strong>, skilled in <strong>Game Development</strong>, <strong>Web Development</strong>, and <strong>Software Engineering</strong>. I am also a <strong>Freelancer</strong>, always eager to learn and grow in new areas of technology
       </Typography>
     </Box>
   );

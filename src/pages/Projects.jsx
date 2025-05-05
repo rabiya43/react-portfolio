@@ -30,7 +30,7 @@ function Projects() {
         transition={{ duration: 0.6 }}
       >
         <Typography
-          variant="h4"
+          variant="h3"
           gutterBottom
           sx={{
             fontWeight: 'bold',

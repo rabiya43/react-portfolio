@@ -2,12 +2,12 @@ import React, { useEffect, useContext } from 'react';
 import {
   Typography,
   Box,
-  LinearProgress,
   Grid,
   Paper,
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import { PageTitleContext } from '../context/PageTitleContext';
+import ProgressBar from '../ProgressBar';
 
 const skills = [
   { name: 'C++/C#', level: 90, img: 'Cpp.jpeg' },
@@ -56,21 +56,14 @@ const Skills = () => {
                     borderRadius: '8px',
                     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                     boxShadow: 3,
-                    mb: 1,
+                    mb: 2,
                     '&:hover': {
                       transform: 'scale(1.1)',
                       boxShadow: '0 8px 16px rgba(0,0,0,0.3)',
                     },
                   }}
                 />
-                <Typography variant="subtitle1" gutterBottom sx={{ fontWeight: 'bold' }}>
-                  {skill.name}
-                </Typography>
-                <LinearProgress
-                  variant="determinate"
-                  value={skill.level}
-                  sx={{ height: 15, borderRadius: 5 }}
-                />
+                <ProgressBar label={skill.name} value={skill.level} />
               </Paper>
             </motion.div>
           </Grid>
