@@ -25,7 +25,7 @@ const Header = () => {
         <div>
           <IconButton onClick={handleClick}>
             <Avatar
-              src="/assets/images/profile.jpg"
+              src="/profile.jpg"
               sx={{ bgcolor: 'primary.main' }}
             />
           </IconButton>

@@ -23,6 +23,11 @@ const Skills = () => {
 
   useEffect(() => {
     setTitle('Skills');
+
+    // You can later replace `skills` array with API data like this:
+    // axios.get(`${process.env.REACT_APP_API_URL}/api/skills`)
+    //   .then(res => console.log(res.data))
+    //   .catch(err => console.error(err));
   }, [setTitle]);
 
   return (
