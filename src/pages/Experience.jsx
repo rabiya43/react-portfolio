@@ -8,6 +8,7 @@ import {
 } from '@mui/material';
 import { PageTitleContext } from '../context/PageTitleContext';
 import { motion } from 'framer-motion';
+// import axios from 'axios'; // Uncomment for backend
 
 const experiences = [
   { title: 'Event Management Head', organization: 'KBW', year: '2022' },
@@ -21,6 +22,10 @@ const Experience = () => {
   const { setTitle } = useContext(PageTitleContext);
   useEffect(() => {
     setTitle('Experience');
+
+    // axios.get(`${process.env.REACT_APP_API_URL}/api/experience`)
+    //   .then(res => console.log(res.data))
+    //   .catch(err => console.error(err));
   }, [setTitle]);
 
   const top = experiences.slice(0, 1);
@@ -92,17 +97,12 @@ const Experience = () => {
           alignItems: 'center',
         }}
       >
-        {/* Top */}
         <Box gridColumn="1 / span 3" gridRow="1">
           {renderList(top, 'center')}
         </Box>
-
-        {/* Left */}
         <Box gridColumn="1" gridRow="2">
           {renderList(left, 'right')}
         </Box>
-
-        {/* Center Image */}
         <Box gridColumn="2" gridRow="2" sx={{ p: 1 }}>
           <Box
             component="img"
@@ -122,13 +122,9 @@ const Experience = () => {
             }}
           />
         </Box>
-
-        {/* Right */}
         <Box gridColumn="3" gridRow="2">
           {renderList(right, 'left')}
         </Box>
-
-        {/* Bottom */}
         <Box gridColumn="1 / span 3" gridRow="3">
           {renderList(bottom, 'center')}
         </Box>
